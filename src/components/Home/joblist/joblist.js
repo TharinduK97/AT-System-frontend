@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 
 import {Link} from 'react-router-dom';
-import Job_list_item from "../Home/job list item/Job-list-item";
+import Job_list_item from "../job list item/Job-list-item";
 
-class Home extends Component {
+class Joblist extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -105,4 +105,4 @@ render() {
 
 
 
-export default Home;
+export default Joblist;

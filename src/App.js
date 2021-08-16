@@ -8,6 +8,8 @@ import Profile from './components/profile/profile';
 import Login from './components/Login/login';
 import Interviews from "./components/Interviews/interviews";
 import Appliedjobs from "./components/Applied jobs/appliedjobs";
+import Jobview from "./components/Home/job view/Jobview.js";
+import Joblist from "./components/Home/joblist/joblist";
 
 const App = (props) => {
 
@@ -16,12 +18,15 @@ const App = (props) => {
         <div>
           <Nav/>
           <Switch>
+
+
               <Route path="/appliedjobs"><Appliedjobs/></Route>
               <Route path="/interview"><Interviews/></Route>
               <Route path="/login"><Login/></Route>
               <Route path="/profile"><Profile/></Route>
+              <Route path="/:id" component={Jobview}/>
               <Route path="/" exact component={Home}/>
-            <Redirect to="/"/>
+              <Redirect to="/"/>
           </Switch>
           <Footer/>
         </div>

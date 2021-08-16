@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import './Jobview.css';
 import { withRouter } from "react-router";
 import axios from 'axios';
-import * as actions from "../../../store/actions";
 import connect from "react-redux/es/connect/connect";
 
 class Jobview extends Component {
@@ -18,16 +17,16 @@ class Jobview extends Component {
 
     componentDidMount() {
 
-            // fetch('http://localhost:3001/applicant/jobs/job/'+this.props.match.params.id)
-            // .then(res => res.json())
-            // .then(job =>
-            //     this.setState({ job:job.data}),
-            //
-            // )
-            // .catch(error => {
-            //
-            //     this.setState({error: true});
-            // });
+            fetch('https://localhost:5001/Job/'+this.props.match.params.id)
+            .then(res => res.json())
+            .then(job =>
+                this.setState({ job:job.data}),
+
+            )
+            .catch(error => {
+
+                this.setState({error: true});
+            });
 
     }
 
@@ -61,7 +60,87 @@ class Jobview extends Component {
         return (
 
             <div>
+                <br/>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-1">
 
+                        </div>
+                        <div className="col-sm-10">
+
+                            <div className="card border-secondary">
+                                <h5 className="card-header  text-secondary">{this.state.job.title}</h5>
+                                <div className="card-body  text-secondary">
+                                    <div className="container">
+                                        <div className="row">
+
+                                            <div className="col">
+                                                <h6 className="card-title">Skills - {this.state.job.skills}</h6>
+<br/>
+                                            </div>
+                                            <div className="col">
+
+                                            </div>
+                                            <div className="col">
+                                                <h6 className="card-title">Date - {this.state.job.limitLine}</h6>
+
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col">
+                                                <h6 className="card-title">Salary - {this.state.job.salary}</h6>
+                                                <br/>
+                                            </div>
+
+                                        </div>
+                                        <div className="row">
+                                            <div className="col">
+                                                <h6 className="card-title">Type - {this.state.job.fullPart}</h6>
+                                            </div>
+
+                                        </div>
+
+                                        <div className="row">
+                                            <div className="col-8">
+                                                <hr/>
+                                                <p className="card-text"><u>Job Requirment</u></p>
+
+                                                <p className="card-text">{this.state.job.description}</p>
+
+                                            </div>
+
+                                            <div className="col-4">
+
+
+                                            </div>
+
+                                        </div>
+
+                                        <div className="row">
+                                            <div className="col">
+
+                                            </div>
+                                            <div className="col">
+
+                                            </div>
+                                            <div className="col">
+                                                <button  className="btn btn-secondary">Apply</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div className="col-sm-1">
+
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
@@ -81,5 +160,5 @@ const mapDispatchToProps = dispatch => {
 
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Jobview);
+export default (Jobview);
 
