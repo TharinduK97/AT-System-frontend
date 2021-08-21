@@ -1,42 +1,70 @@
 import React, {Component,useState, useEffect} from 'react';
 import './App.css';
 import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
-import Nav from './components/Navbar/navbar';
-import Footer from './components/footer/footer';
-import Home from './components/Home/home';
-import Profile from './components/profile/profile';
-import Login from './components/Login/login';
-import Interviews from "./components/Interviews/interviews";
-import Appliedjobs from "./components/Applied jobs/appliedjobs";
-import Jobview from "./components/Home/job view/Jobview.js";
-import Joblist from "./components/Home/joblist/joblist";
+import Nav from './Component/Navigationbar/Nav';
+import Userprofile from './Component/Profile/Userprofile';
+import Editprofile from './Component/Profile/temp';
+import Joblist from './Component/Jobs/joblist/Joblist';
+import Interviews from './Component/interviewsx/interviews';
+import Signin from './Component/Login/ApplicantLogin';
+import Jobview from './Component/home/Jobview/Jobview';
+import AppliedJobview from './Component/Jobs/applied-job-view/applied-job-view';
+import Home from './Component/home/main_job_list';
+import Footer from './Component/Footer/Footer';
+import {authCheckState} from '../src/store/actions/auth';
+import { connect } from 'react-redux';
+import Logout from "./Component/Login/Logout/Logout";
+import ApplicantSignup from './Component/Login/Signup/ApplicantSignup';
+import Admin from './Component/Profile/AdminPanel/admin.js';
 
 const App = (props) => {
 
-  return (
-      <BrowserRouter>
-        <div>
-          <Nav/>
-          <Switch>
 
+    useEffect(() => {
 
-              <Route path="/appliedjobs"><Appliedjobs/></Route>
-              <Route path="/interview"><Interviews/></Route>
-              <Route path="/login"><Login/></Route>
-              <Route path="/profile"><Profile/></Route>
-              <Route path="/:id" component={Jobview}/>
-              <Route path="/" exact component={Home}/>
-              <Redirect to="/"/>
-          </Switch>
-          <Footer/>
-        </div>
-      </BrowserRouter>
+        props.onTryAutoSignup();
 
-  );
+    }, []);
+
+    return (
+        <BrowserRouter>
+            <div>
+                <Nav/>
+                <Switch>
+
+                    {/*<Route path="/appliedjobview/:id"><AppliedJobview/></Route>*/}
+                    <Route path="/joblist/:id" component={Jobview}/>
+                    <Route path="/joblist"><Joblist/></Route>
+                    <Route path="/editprofile"><Editprofile/></Route>
+                    <Route path="/userprofile" component={Userprofile}/>
+                    <Route path="/admin" component={Admin}/>
+                    <Route path="/interviews"><Interviews/></Route>
+                    <Route path="/signin"><Signin/></Route>
+                    <Route path="/logout"><Logout/></Route>
+                    <Route path="/signup" component={ApplicantSignup}/>
+                    <Route path="/" exact component={Home}/>
+                    <Redirect to="/"/>
+                </Switch>
+                {/*<Footer/>*/}
+            </div>
+        </BrowserRouter>
+
+    );
 }
 
 
+const mapStateToProps = (state) => {
+    return {
 
-export default App;
+        isAuthenticated: state.auth.token !== null
+    }
+}
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+        onTryAutoSignup: () => dispatch(authCheckState())
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
