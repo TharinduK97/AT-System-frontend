@@ -113,7 +113,7 @@ class main_job_list extends Component {
                             // console.log(this.state.jobs)
                             //      console.log(today<=job.limitLine)
 
-                             console.log(this.props.role)
+                             // console.log(this.props.role)
                                 if(this.props. isAuthenticated && today<=job.limitLine && this.props.role=="Applicant"  ){
                                     if (this.state.appliedJob !==[] && !this.state.appliedJob.includes(job.id)) {
                                         return (

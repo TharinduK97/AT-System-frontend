@@ -61,7 +61,7 @@ export const auth = (email, password) => {
                   // console.log(response.data.data)
 
                 var decoded = jwt_decode(response.data.data);
-                console.log(decoded)
+
                 const expirationDate = new Date(new Date().getTime() + (3600 * 2 * 1000));
                 localStorage.setItem('token', response.data.data);
                 localStorage.setItem('expirationDate', new Date(decoded.exp * 1000));
@@ -69,7 +69,7 @@ export const auth = (email, password) => {
                 localStorage.setItem('role', decoded.role);
                 dispatch(authSuccess(response.data.data, decoded.nameid, decoded.role));
                 dispatch(checkAuthTimeout(3600 * 1));
-                console.log(response)
+                // console.log(response)
             })
             .catch(function (error) {
                 var str = error.toString();

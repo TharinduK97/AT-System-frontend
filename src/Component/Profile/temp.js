@@ -48,6 +48,7 @@ const Editdetails =(props)=> {
 
 
     const  handleSubmit = e=>{
+        // console.log(props.applicant_cv);
 
         e.preventDefault();
         errors.phonenumber==""&&errors.email==""?state.isvalid=true:state.isvalid=false;
@@ -331,7 +332,7 @@ const Editdetails =(props)=> {
                                             <div className="col-sm-5"></div>
                                             <div className="col-sm-4"></div>
                                             <div className="col-sm-3">
-                                                <button className="btn btn-secondary " type='submit'>Save</button>
+                                                <button className="btn btn-secondary " type='submit' >Save</button>
                                             </div>
                                         </div>
 
@@ -362,6 +363,7 @@ const mapStateToProps = state => {
         applicant_bio:state.hp_userpanel_reducer.applicant_bio,
         applicant_userName:state.hp_userpanel_reducer.applicant_userName,
         applicant_email:state.hp_userpanel_reducer.applicant_email,
+        applicant_cv:state.hp_userpanel_reducer.applicant_cv,
         image_url:state.hp_userpanel_reducer.image_url,
     }
 };

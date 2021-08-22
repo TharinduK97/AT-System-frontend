@@ -22,7 +22,7 @@ export const get_imgurl = ( url ) => {
     };
 };
 
-export const get_applicant_details = ( fName,lName,gender,contactNo,workExperience,skills,imgUrl,bio,userName,email ) => {
+export const get_applicant_details = ( fName,lName,gender,contactNo,workExperience,skills,imgUrl,bio,userName,email,cv ) => {
     // console.log(fName);
     return {
         type: actionTypes.GET_APPLICANT_DETAILS,
@@ -35,6 +35,7 @@ export const get_applicant_details = ( fName,lName,gender,contactNo,workExperien
         applicant_imgUrl:imgUrl,
         applicant_bio:bio,
         applicant_userName:userName,
-        applicant_email:email
+        applicant_email:email,
+        applicant_cv:cv
     };
 };

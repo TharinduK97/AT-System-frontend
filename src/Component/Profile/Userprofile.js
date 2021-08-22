@@ -22,7 +22,8 @@ class Userprofile extends Component {
             applicant: [],
             error: false,
             cv:null,
-            img:null
+            img:null,
+            cvpath:null,
         }
 
     }
@@ -38,29 +39,55 @@ class Userprofile extends Component {
 
             // this.props.get_applicant_detail(this.state.applicant)
 
-        axios
-            .post('http://localhost:3001/applicant/cvs/search', {
-                applicant_iD:this.props.applicant_id
-            })
-            .then(response => {
-                const distance = response.data.data[0].cv_url;
-                // console.log(distance);
-                 this.setState({cv: distance});
-                // this.setState({cv:response.data.data})
-                 // console.log(response.data.)
+        var axios = require('axios');
 
-            })
-            .catch(error => {
-                console.log(error)
-            })
+        var config = {
+            method: 'get',
+            url: `https://localhost:5001/Cv/GetAll`,
+            headers: {
+                'Authorization': `Bearer ${this.props.token} `,
+
+            },
+
+
+        };
+        axios(config)
+            .then(function (response) {
+                const distance = response.data.data.cvpath;
+                   // console.log(response.data.data);
+                   this.setState({cv:response.data.data})
+                this.setState({cvpath: distance});
+            }.bind(this))
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
+
+
+        // axios
+        //     .get('https://localhost:5001/Cv/GetAll', {
+        //
+        //     })
+        //     .then(response => {
+        //         const distance = response.data.cvpath;
+        //         // console.log(distance);
+        //          this.setState({cv: distance});
+        //
+        //
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+        //     })
     }
 
 
     handle_edit = () => {
         this.props.get_applicant_detail(this.state.applicant.firstName,this.state.applicant.lastName,this.state.applicant.gender,this.state.applicant.contactNum,this.state.applicant.workExperience,this.state.applicant.skills,this.state.applicant.img_url,
-            this.state.applicant.bio,this.state.applicant.user_name,this.state.applicant.email);
+            this.state.applicant.bio,this.state.applicant.user_name,this.state.applicant.email,this.state.cv);
         this.props.get_imgurl(this.state.applicant.img_url)
          // this.props.history.push('/editprofile')
+         console.log(this.state.cv)
 
     }
 
@@ -181,7 +208,7 @@ class Userprofile extends Component {
                                                             <div className="col-sm-4 ">
 
                                                                 {/*{cv_item}*/}
-                                                                <a href={this.state.cv} download="awwad.pdf">Click here to
+                                                                <a href={this.state.cvpath} download="awwad.pdf">Click here to
                                                                     view cv</a>
 
 
@@ -279,7 +306,8 @@ class Userprofile extends Component {
 
 const mapStateToProps = state => {
     return {
-        applicant_id: state.auth.userId
+        applicant_id: state.auth.userId,
+        token: state.auth.token,
     }
 };
 
@@ -287,7 +315,7 @@ const mapDispatchToProps = dispatch => {
     return {
 
         get_applicant_id: (id) => dispatch(actions.get_applicant_id(id)),
-        get_applicant_detail: (fName,lName,gender,contactNo,workExperience,skills,imgUrl,bio,userName,email) => dispatch(actions.get_applicant_details(fName,lName,gender,contactNo,workExperience,skills,imgUrl,bio,userName,email)),
+        get_applicant_detail: (fName,lName,gender,contactNo,workExperience,skills,imgUrl,bio,userName,email,cv) => dispatch(actions.get_applicant_details(fName,lName,gender,contactNo,workExperience,skills,imgUrl,bio,userName,email,cv)),
         get_imgurl: (url) => dispatch(actions.get_imgurl(url)),
     }
 };

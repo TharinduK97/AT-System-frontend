@@ -33,7 +33,8 @@ class Cvupload extends Component {
             image: null,
             progressx: false,
             progress: '',
-            cv: null
+            cv: null,
+            cvpath:''
 
         }
     }
@@ -50,6 +51,8 @@ class Cvupload extends Component {
         this.setState({username:this.props.applicant_userName});
         this.setState({email:this.props.applicant_email});
         //
+
+        console.log(this.props.applicant_cv)
     }
 
 
@@ -66,19 +69,92 @@ class Cvupload extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+        if(this.props.applicant_cv==null){
+            var bodyFormData = new FormData();
+            bodyFormData.append('file', this.state.cv);
+
+            axios.post(`https://localhost:5001/Cv/Store`, bodyFormData)
+                .then(function (response) {
+                    console.log(response.data.dbPath);
+                    this.setState({cvpath: response.data})
 
 
-        var bodyFormData = new FormData();
-        bodyFormData.append('cv', this.state.cv);
 
-        axios.put(`http://localhost:3001/applicant/cvs/update-cv/${this.props.applicant_id}`, bodyFormData)
-            .then(function (response) {
-                console.log(response);
-                alert("Updated Successfully!")
-            })
-            .catch(function (response) {
-                console.log(response);
-            });
+                    var axios = require('axios');
+
+                    var data = JSON.stringify({"cvpath": `https://localhost:5001/${response.data.dbPath}`});
+
+                    var config = {
+                        method: 'post',
+                        url: `https://localhost:5001/Cv`,
+                        headers: {
+                            'Authorization': `Bearer ${this.props.token} `,
+                            'Content-Type': 'application/json',
+
+                        },
+
+                        data: data
+                    };
+                    axios(config)
+                        .then(function (response) {
+                            // console.log(JSON.stringify(response.data));
+                            alert('Submitted!')
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+
+                }.bind(this))
+                .catch(function (response) {
+                    console.log(response);
+                });
+
+
+
+        }else {
+            var bodyFormData = new FormData();
+            bodyFormData.append('file', this.state.cv);
+
+            axios.post(`https://localhost:5001/Cv/Store`, bodyFormData)
+                .then(function (response) {
+                    console.log(response.data.dbPath);
+                    this.setState({cvpath: response.data})
+
+
+
+                    var axios = require('axios');
+
+                    var data = JSON.stringify({"id":this.props.applicant_cv.id,"cvpath": `https://localhost:5001/${response.data.dbPath}`});
+
+                    var config = {
+                        method: 'put',
+                        url: `https://localhost:5001/Cv`,
+                        headers: {
+                            'Authorization': `Bearer ${this.props.token} `,
+                            'Content-Type': 'application/json',
+
+                        },
+
+                        data: data
+                    };
+                    axios(config)
+                        .then(function (response) {
+                            // console.log(JSON.stringify(response.data));
+                            alert('Submitted!')
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+
+                }.bind(this))
+                .catch(function (response) {
+                    console.log(response);
+                });
+
+
+        }
+
+
 
     };
 
@@ -111,7 +187,7 @@ class Cvupload extends Component {
 
 const mapStateToProps = state => {
     return {
-        applicant_id: state.hp_userpanel_reducer.applicant_id,
+        applicant_id: state.auth.userId,
         applicant_fName: state.hp_userpanel_reducer.applicant_fName,
         applicant_lName: state.hp_userpanel_reducer.applicant_lName,
         applicant_contactNo:state.hp_userpanel_reducer.applicant_contactNo,
@@ -121,7 +197,9 @@ const mapStateToProps = state => {
         applicant_bio:state.hp_userpanel_reducer.applicant_bio,
         applicant_userName:state.hp_userpanel_reducer.applicant_userName,
         applicant_email:state.hp_userpanel_reducer.applicant_email,
+        applicant_cv:state.hp_userpanel_reducer.applicant_cv,
         image_url:state.hp_userpanel_reducer.image_url,
+        token: state.auth.token,
     }
 };
 

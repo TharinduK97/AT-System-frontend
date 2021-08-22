@@ -38,8 +38,8 @@ class Joblist extends Component {
         axios(config)
             .then(function (response) {
                  this.setState({ jobs:response.data.data});
-                console.log(JSON.stringify(response.data));
-                console.log(response.data)
+                // console.log(JSON.stringify(response.data));
+                // console.log(response.data)
 
             }.bind(this))
             .catch(function (error) {

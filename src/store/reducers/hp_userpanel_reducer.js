@@ -14,7 +14,8 @@ const initialState = {
     applicant_bio:null,
     applicant_userName:null,
     applicant_email:null,
-    image_url:null
+    image_url:null,
+    applicant_cv:null
 
 };
 
@@ -50,6 +51,7 @@ const get_applicant_detail = (state, action) => {
         applicant_bio:action.applicant_bio,
         applicant_userName:action.applicant_userName,
         applicant_email:action.applicant_email,
+        applicant_cv:action.applicant_cv,
         error: false
     } );
 
