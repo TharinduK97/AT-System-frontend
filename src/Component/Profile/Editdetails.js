@@ -179,7 +179,7 @@ const Editdetails =(props)=> {
                 <div class="row">
 
                     <div class="col-sm-2">
-                        <div class="row"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
+                        <div class="row"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Mangejobs"
                                               class="rounded-circle" width="100px" height="175px"></img></div>
                         <div class="row"></div>
                         <div class="row">

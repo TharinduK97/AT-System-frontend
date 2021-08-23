@@ -6,7 +6,7 @@ import {useHistory} from "react-router";
 import "./ApplicantLogin.css";
 import * as actions from '../../../src/store/actions/index';
 import Select_profile from "../Profile/Userprofile";
-import Select_admin from "../Profile/AdminPanel/admin.js";
+import Select_admin from "../Profile/AdminPanel/Dashboard/admin.js";
 import {connect} from "react-redux";
 import {Link} from 'react-router-dom';
 

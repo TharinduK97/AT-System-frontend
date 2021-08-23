@@ -58,13 +58,31 @@ const navbar = (props) => {
                             </li>
                             :<p></p>}
 
-                            { props.isAuthenticated  ?
+                            { props.isAuthenticated && props.role==="Applicant" ?
                                 <li className="nav-item ">
                                     <Link className="nav-link " to="/joblist">
                                         Applied Jobs
                                     </Link>
                                 </li>
                                 :<p></p>}
+
+                            { props.isAuthenticated && props.role==="Admin" ?
+                                <li className="nav-item ">
+                                    <Link className="nav-link " to="/managejobs">
+                                        Jobs
+                                    </Link>
+                                </li>
+                                :<p></p>}
+
+                            { props.isAuthenticated && props.role==="Admin" ?
+                                <li className="nav-item ">
+                                    <Link className="nav-link " to="/admin">
+                                        Users
+                                    </Link>
+                                </li>
+                                :<p></p>}
+
+
                             { props.isAuthenticated && props.role==="Admin" ?
                                 <li className="nav-item ">
                                     <Link className="nav-link " to="/admin">

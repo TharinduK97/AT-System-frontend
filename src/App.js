@@ -15,7 +15,10 @@ import {authCheckState} from '../src/store/actions/auth';
 import { connect } from 'react-redux';
 import Logout from "./Component/Login/Logout/Logout";
 import ApplicantSignup from './Component/Login/Signup/ApplicantSignup';
-import Admin from './Component/Profile/AdminPanel/admin.js';
+import Admin from './Component/Profile/AdminPanel/Dashboard/admin.js';
+import Mangejobs from "./Component/Profile/AdminPanel/Jobs/mangejobs";
+import ManageJobview from "./Component/Profile/AdminPanel/Jobs/Jobview/ManageJobview";
+import Addnewjob from "./Component/Profile/AdminPanel/Jobs/AddNewJob/addnewjob";
 
 const App = (props) => {
 
@@ -37,6 +40,9 @@ const App = (props) => {
                     <Route path="/joblist"><Joblist/></Route>
                     <Route path="/editprofile"><Editprofile/></Route>
                     <Route path="/userprofile" component={Userprofile}/>
+                    <Route path="/managejobs/:id" component={ManageJobview}/>
+                    <Route path="/addnewjobs" component={Addnewjob}/>
+                    <Route path="/managejobs" component={Mangejobs}/>
                     <Route path="/admin" component={Admin}/>
                     <Route path="/interviews"><Interviews/></Route>
                     <Route path="/signin"><Signin/></Route>

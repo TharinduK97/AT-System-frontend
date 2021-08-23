@@ -51,7 +51,7 @@ const Editdetails =(props)=> {
         // console.log(props.applicant_cv);
 
         e.preventDefault();
-        errors.phonenumber==""&&errors.email==""?state.isvalid=true:state.isvalid=false;
+        errors.lastName==""&&errors.firstName==""&&errors.password2==""&&errors.phonenumber==""&&errors.address==""&&errors.email==""&&errors.password==""?state.isvalid=true:state.isvalid=false;
 
         if (state.isvalid===true){
             var axios = require('axios');
