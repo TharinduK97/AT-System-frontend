@@ -85,7 +85,7 @@ const navbar = (props) => {
 
                             { props.isAuthenticated && props.role==="Admin" ?
                                 <li className="nav-item ">
-                                    <Link className="nav-link " to="/admin">
+                                    <Link className="nav-link " to="">
                                         Dashboard
                                     </Link>
                                 </li>

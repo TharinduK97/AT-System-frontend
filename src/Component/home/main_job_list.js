@@ -115,7 +115,7 @@ class main_job_list extends Component {
 
                              // console.log(this.props.role)
                                 if(this.props. isAuthenticated && today<=job.limitLine && this.props.role=="Applicant"  ){
-                                    if (this.state.appliedJob !==[] && !this.state.appliedJob.includes(job.id)) {
+                                    if (this.state.appliedJob !==[] && !this.state.appliedJob.includes(job.id) && job.jobStatus =='Active') {
                                         return (
                                             <Job_list_item
                                                 key={job.id}
@@ -125,7 +125,7 @@ class main_job_list extends Component {
                                                 limitLine={job.limitLine}
                                                 description={job.description}
                                                 skills={job.skills}
-
+                                                jobStatus={job.jobStatus}
 
                                             />
                                         );
@@ -140,7 +140,7 @@ class main_job_list extends Component {
                                             limitLine={job.limitLine}
                                             description={job.description}
                                             skills={job.skills}
-
+                                            jobStatus={job.jobStatus}
 
                                         />
                                     );

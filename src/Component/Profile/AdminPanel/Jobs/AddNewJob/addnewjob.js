@@ -39,6 +39,7 @@ class Addnewjob extends Component {
 
 
     }
+
     handleChangetitle(event) {
         this.setState({title: event.target.value});
     }
