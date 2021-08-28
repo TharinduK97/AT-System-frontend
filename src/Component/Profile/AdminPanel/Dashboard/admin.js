@@ -51,18 +51,19 @@ class Admin extends Component {
                     this.state.users != undefined && (
 
                         this.state.users.map((user) => {
+                            if( user.role=="Applicant"  ) {
+                                return (
+                                    <User_list_item
+                                        key={user.id}
+                                        ID={user.id}
+                                        role={user.role}
+                                        firstName={user.firstName}
+                                        lastName={user.lastName}
+                                        email={user.email}
 
-                            return (
-                                <User_list_item
-                                    key={user.id}
-                                    ID={user.id}
-                                    role={user.role}
-                                    firstName={user.firstName}
-                                    lastName={user.lastName}
-                                    email={user.email}
-
-                                />
-                            );
+                                    />
+                                );
+                            }
                         })
                     )
                 }

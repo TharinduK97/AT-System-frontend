@@ -21,6 +21,8 @@ import ManageJobview from "./Component/Profile/AdminPanel/Jobs/Jobview/ManageJob
 import Addnewjob from "./Component/Profile/AdminPanel/Jobs/AddNewJob/addnewjob";
 import User_list_item from "./Component/Profile/AdminPanel/Dashboard/user_list_item/user_list_item";
 import Userview from "./Component/Profile/AdminPanel/Dashboard/user_list_item/userview/Userview";
+import Dashboard from "./Component/Profile/AdminPanel/interviws/dashboard";
+import Admin_applied_jobs from "./Component/Profile/AdminPanel/Dashboard/aplliedjobs_admin/joblist/admin_applied_jobs";
 
 const App = (props) => {
 
@@ -46,9 +48,11 @@ const App = (props) => {
                     <Route path="/addnewjobs" component={Addnewjob}/>
                     <Route path="/managejobs" component={Mangejobs}/>
                     <Route path="/admin/:id" component={Userview}/>
+                    <Route path="/adjobs"><Admin_applied_jobs/></Route>
                     <Route path="/admin" component={Admin}/>
                     <Route path="/interviews"><Interviews/></Route>
                     <Route path="/signin"><Signin/></Route>
+                    <Route path="/dashboard"><Dashboard/></Route>
                     <Route path="/logout"><Logout/></Route>
                     <Route path="/signup" component={ApplicantSignup}/>
                     <Route path="/" exact component={Home}/>

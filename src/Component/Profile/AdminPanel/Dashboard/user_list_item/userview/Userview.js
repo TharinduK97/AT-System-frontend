@@ -13,6 +13,8 @@ import axios from "axios";
 import {History} from 'react-router-dom';
 import * as actions from '../../../../../../../src/store/actions/index';
 import Password from '../../../../password'
+import Admin_applied_jobs from "../../aplliedjobs_admin/joblist/admin_applied_jobs";
+import User_list_item from "../user_list_item";
 
 class Userview extends Component {
 
@@ -110,11 +112,11 @@ class Userview extends Component {
         return (
 
 
-            <div class="container scr">
+            <div class="container-fluide">
 
-                <div className="container">
+                <div className="container-fluide">
                     <div className="row">
-                        <div className="col-8">
+                        <div className="col-6">
 
                             <div className="row">
 
@@ -236,7 +238,7 @@ class Userview extends Component {
 
 
 
-                        <div className="col-4">
+                        <div className="col-6">
                             <div className="row">
 
 
@@ -246,9 +248,9 @@ class Userview extends Component {
                             <div className="row">
 
                                 <div className="col">
-                                    <Link type="button"  to="/joblist"
-                                            className="btn btn-outline-secondary" >View jobs
-                                    </Link>
+                                   <Admin_applied_jobs
+                                       ID={this.props.match.params.id}
+                                   />
 
                                 </div>
                             </div>
