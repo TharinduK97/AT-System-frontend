@@ -14,7 +14,6 @@ import {History} from 'react-router-dom';
 import * as actions from '../../../../../../../src/store/actions/index';
 import Password from '../../../../password'
 import Admin_applied_jobs from "../../aplliedjobs_admin/joblist/admin_applied_jobs";
-import User_list_item from "../user_list_item";
 
 class Userview extends Component {
 
@@ -112,11 +111,11 @@ class Userview extends Component {
         return (
 
 
-            <div class="container-fluide">
+            <div class="container scr">
 
-                <div className="container-fluide">
+                <div className="container">
                     <div className="row">
-                        <div className="col-6">
+                        <div className="col-8">
 
                             <div className="row">
 
@@ -238,20 +237,44 @@ class Userview extends Component {
 
 
 
-                        <div className="col-6">
+                        <div className="col-4">
                             <div className="row">
 
+                                <div className="modal  fade" id="staticBackdrop" data-bs-backdrop="static"
+                                     data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel"
+                                     aria-hidden="true">
+                                    <div className="modal-dialog">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h5 className="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                                <button type="button" className="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div className="modal-body">
+                                                <Admin_applied_jobs
+                                                    ID={this.props.match.params.id}
+                                                />
+                                            </div>
+                                            <div className="modal-footer">
+                                                <button type="button" className="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close
+                                                </button>
 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
 
                             <div className="row">
 
                                 <div className="col">
-                                   <Admin_applied_jobs
-                                       ID={this.props.match.params.id}
-                                   />
 
+                                    <button type="button" className="btn btn-outline-secondary" data-bs-toggle="modal"
+                                            data-bs-target="#staticBackdrop">
+                                            view jobs
+                                    </button>
                                 </div>
                             </div>
                         </div>

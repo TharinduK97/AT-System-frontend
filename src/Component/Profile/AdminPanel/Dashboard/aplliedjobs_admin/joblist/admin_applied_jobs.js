@@ -66,19 +66,15 @@ class Admin_applied_jobs extends Component {
 
             <div>
 <br/>
-                <div className="container  card">
+                <div className="container">
                     <div className="row">
-                        <div className="col-sm-3">
 
-                        </div>
-                        <div className="col-sm-6">
+                        <div className="col-sm">
                             {jobitem}
 
                         </div>
 
-                        <div className="col-sm-3">
 
-                        </div>
 
 
                     </div>

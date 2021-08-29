@@ -15,7 +15,16 @@ class Joblistitem extends Component {
     }
 
     componentDidMount() {
+        fetch('https://localhost:5001/Job/'+this.props.id)
+            .then(res => res.json())
+            .then(job =>
+                this.setState({ job:job.data}),
 
+            )
+            .catch(error => {
+
+                this.setState({error: true});
+            });
 
     }
     render() {
@@ -31,7 +40,7 @@ class Joblistitem extends Component {
 
                 <Link className="link textdec"  to={`/joblist/${this.props.id}`}>
 
-                    <div className="tab-content clearfix container ">
+                    <div className="tab-content ">
 
                         <div className="row">
                             <div className="tm-recommended-place-wrap">
@@ -41,7 +50,7 @@ class Joblistitem extends Component {
                                         <div className="container">
                                         <div className="row">
                                             <div className="col-sm-8">
-                                                <h3 className="tm-text-gray">{this.props.title}</h3>
+                                                <h3 className="tm-text-gray">{this.state.job.title}</h3>
                                             </div>
 
                                         </div>
@@ -49,8 +58,8 @@ class Joblistitem extends Component {
 
                                         <div className="container">
                                             <div className="row">
-                                                <div className="col-sm-7">
-                                                    <div className="row ">
+                                                <div className="col-sm">
+                                                    <div className="row">
                                                         <div className="col-sm">
 
                                                             {/*<strong>{date.toLocaleDateString()}</strong></div>*/}

@@ -13,18 +13,6 @@ class Joblist extends Component {
 
     componentDidMount() {
 
-        // fetch('http://localhost:3001/applicant/applicantjobs/get-applied-jobs/'+this.props.applicant_id)
-        //     .then(res => res.json())
-        //     .then(job =>
-        //         this.setState({ jobs:job.data}),
-        //
-        //     )
-        //     .catch(error => {
-        //
-        //         this.setState({error: true});
-        //     });
-
-
         var config = {
             method: 'get',
             url: 'https://localhost:5001/AppliedJob/GetAll',
