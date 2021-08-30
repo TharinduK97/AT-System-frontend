@@ -15,13 +15,18 @@ class Applied_job_view extends Component {
             jobs: [],
             user:[],
             error: false,
-            status:'Pending'
+            status:'Pending',
+            email:''
         }
         this.handleChangetitle = this.handleChangetitle.bind(this);
+        this.handleChangeemail = this.handleChangeemail.bind(this);
     }
 
     handleChangetitle(event) {
         this.setState({status: event.target.value});
+    }
+    handleChangeemail(event) {
+        this.setState({email: event.target.value});
     }
 
     componentDidMount() {
@@ -41,7 +46,7 @@ class Applied_job_view extends Component {
                  this.setState({ job:response.data.data});
                 this.setState({ user:response.data.data.user});
                 // console.log(JSON.stringify(response.data));
-                  console.log(response.data.data.user)
+                //   console.log(response.data.data.user)
 
                 fetch('https://localhost:5001/Job/'+this.state.job.jobID)
                     .then(res => res.json())
@@ -66,7 +71,7 @@ class Applied_job_view extends Component {
     }
 
     handlesubmit = (event) => {
-        event.preventDefault();
+
         console.log(this.state.status)
 
         var axios = require('axios');
@@ -95,6 +100,38 @@ class Applied_job_view extends Component {
 
     }
 
+    handlesumbitemail=(event)=>{
+        event.preventDefault();
+        console.log(this.state.email)
+
+        var axios = require('axios');
+        var FormData = require('form-data');
+        var fs = require('fs');
+        var data = new FormData();
+        data.append('ToEmail', 'tharindu1997811@gmail.com', {contentType: 'text/plain'});
+        data.append('Attachments', fs.createReadStream('/path/to/file'));
+        data.append('Subject', 'Schedule an interview with Azura dev', {contentType: 'text/plain'});
+        data.append('Body',this.state.email , {contentType: 'text/plain'});
+
+        var config = {
+            method: 'post',
+            url: 'https://localhost:5001/Mail/send',
+            headers: {
+                ...data.getHeaders()
+            },
+            data : data
+        };
+
+        axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+                alert('email sent')
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    }
 
     render() {
 
@@ -102,7 +139,7 @@ class Applied_job_view extends Component {
 
             <div>
                 <br/>
-                <form onSubmit={this.handlesubmit}>
+
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-1">
@@ -121,6 +158,7 @@ class Applied_job_view extends Component {
 
 
                                 <div className="card-body  text-secondary">
+                                    <form onSubmit={this.handlesubmit}>
                                     <div className="container">
                                         <div className="row">
 
@@ -171,9 +209,14 @@ class Applied_job_view extends Component {
                                         <div className="row">
                                             <div className="col">
 
+
+
+
+
+
                                             </div>
                                             <div className="col">
-                                                <button type="submit" className="btn btn-secondary" >Schedule an Interview</button>
+
                                             </div>
                                             <div className="col">
                                                 <button type="submit" className="btn btn-secondary" >Save</button>
@@ -182,6 +225,55 @@ class Applied_job_view extends Component {
                                         </div>
 
                                     </div>
+
+                </form>
+
+
+                                    <div className="modal fade" id="exampleModal" tabIndex="-1"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div className="modal-dialog">
+                                            <div className="modal-content">
+                                                <form onSubmit={this.handlesumbitemail}>
+                                                <div className="modal-header">
+                                                    <h5 className="modal-title" id="exampleModalLabel">Schedule an interview
+                                                    </h5>
+                                                    <button type="button" className="btn-close"
+                                                            data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <div className="modal-body">
+
+                                                        <div className="mb-3">
+
+                                                        </div>
+                                                        <div className="mb-3">
+                                                            <label htmlFor="message-text"
+                                                                   className="col-form-label">Message:</label>
+                                                            <textarea className="form-control"
+                                                                      id="message-text" onChange={this.handleChangeemail}></textarea>
+                                                        </div>
+
+                                                </div>
+                                                <div className="modal-footer">
+                                                    <button type="button" className="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close
+                                                    </button>
+                                                    <button type="submit" className="btn btn-secondary">Send
+                                                        message
+                                                    </button>
+                                                </div>
+
+                                            </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <button type="button" className="btn btn-secondary" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal" data-bs-whatever="@mdo">Schedule an Interview
+                                    </button>
 
 
                                 </div>
@@ -195,7 +287,10 @@ class Applied_job_view extends Component {
                     </div>
                 </div>
                 <br/>
-                    </form>
+
+
+
+
             </div>
         )
 
