@@ -69,10 +69,11 @@ class Dashboard extends Component {
             <div>
 
                 { this.state.jobs.map((job) => {
-                    if( !job.jobStatus==="Pending"  ) {
+                    if( job.jobStatus === "Reject"  ) {
                         return (
                             <Joblistitem
                                 key={job.id}
+                                ID={job.id}
                                 id={job.jobID}
                                 title={job.title}
                                 status={job.jobStatus}

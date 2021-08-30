@@ -4,6 +4,7 @@ import axios from 'axios';
 import * as actions from "../../../../store/actions";
 import connect from "react-redux/es/connect/connect";
 import {History} from 'react-router-dom';
+import {Link} from 'react-router-dom'
 
 class Applied_job_view extends Component {
 
@@ -12,9 +13,15 @@ class Applied_job_view extends Component {
         this.state = {
             job: [],
             jobs: [],
+            user:[],
             error: false,
-
+            status:'Pending'
         }
+        this.handleChangetitle = this.handleChangetitle.bind(this);
+    }
+
+    handleChangetitle(event) {
+        this.setState({status: event.target.value});
     }
 
     componentDidMount() {
@@ -32,8 +39,9 @@ class Applied_job_view extends Component {
         axios(config)
             .then(function (response) {
                  this.setState({ job:response.data.data});
+                this.setState({ user:response.data.data.user});
                 // console.log(JSON.stringify(response.data));
-                  console.log(response.data)
+                  console.log(response.data.data.user)
 
                 fetch('https://localhost:5001/Job/'+this.state.job.jobID)
                     .then(res => res.json())
@@ -57,7 +65,33 @@ class Applied_job_view extends Component {
 
     }
 
-    handlesubmit = () => {
+    handlesubmit = (event) => {
+        event.preventDefault();
+        console.log(this.state.status)
+
+        var axios = require('axios');
+
+        var data = JSON.stringify({ "id":this.state.job.id,"jobStatus": this.state.status});
+
+        console.log(data)
+        var config = {
+            method: 'put',
+            url: `https://localhost:5001/AppliedJob`,
+            headers: {
+                'Authorization': `Bearer ${this.props.token} `,
+                'Content-Type': 'application/json',
+
+            },
+            data: data
+        };
+        axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+                alert('Updated!')
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 
     }
 
@@ -68,6 +102,7 @@ class Applied_job_view extends Component {
 
             <div>
                 <br/>
+                <form onSubmit={this.handlesubmit}>
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-1">
@@ -76,34 +111,43 @@ class Applied_job_view extends Component {
                         <div className="col-sm-10">
 
                             <div className="card border-secondary">
-                                <h5 className="card-header  text-secondary">{this.state.jobs.title}</h5>
+                                <Link to={`/admin/${this.state.user.id}`}>
+                                <h5 className="card-header  text-secondary">{this.state.jobs.title} -
+
+                                {this.state.user.firstName} {this.state.user.lastName}</h5>
+
+                            </Link>
+
+
+
                                 <div className="card-body  text-secondary">
                                     <div className="container">
                                         <div className="row">
 
                                             <div className="col">
-                                                <p className="card-title">Skills - {this.state.job.skills}</p>
+                                                <p className="card-title">Status - {this.state.job.jobStatus}</p>
                                                 <br/>
+                                                <select className="form-select" aria-label="Default select example"  onChange={this.handleChangetitle}>
+
+                                                    <option value="Pending" >Pending</option>
+                                                    <option value="Reject">Reject</option>
+                                                </select>
+
                                             </div>
                                             <div className="col">
 
                                             </div>
                                             <div className="col">
-                                                <p className="card-title">Apply Date - {this.state.job.crea}</p>
+                                                <p className="card-title">Apply Date - {this.state.job.createdAt}</p>
 
                                             </div>
                                         </div>
                                         <div className="row">
-                                            <div className="col">
-                                                <p className="card-title">Salary - {this.state.job.salary}</p>
-                                                <br/>
-                                            </div>
+
 
                                         </div>
                                         <div className="row">
-                                            <div className="col">
-                                                <p className="card-title">Type - {this.state.job.fullPart}</p>
-                                            </div>
+
 
                                         </div>
                                         <br/>
@@ -121,28 +165,7 @@ class Applied_job_view extends Component {
 
                                         </div>
 
-                                        <div className="modal fade " id="staticBackdrop" data-bs-backdrop="static"
-                                             data-bs-keyboard="false" tabIndex="-1"
-                                             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                            <div className="modal-dialog">
-                                                <div className="modal-content">
-                                                    <div className="modal-header">
-                                                        <h5 className="modal-title" id="staticBackdropLabel">Confirm here</h5>
-                                                        <button type="button" className="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
-                                                    </div>
 
-
-                                                    <div className="modal-footer">
-                                                        <button type="button" className="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
-                                                                onClick={this.handlesubmit}>Confirm</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
 
 
                                         <div className="row">
@@ -150,10 +173,11 @@ class Applied_job_view extends Component {
 
                                             </div>
                                             <div className="col">
-
+                                                <button type="submit" className="btn btn-secondary" >Schedule an Interview</button>
                                             </div>
                                             <div className="col">
-                                                <button type="submit" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save</button>
+                                                <button type="submit" className="btn btn-secondary" >Save</button>
+
                                             </div>
                                         </div>
 
@@ -171,6 +195,7 @@ class Applied_job_view extends Component {
                     </div>
                 </div>
                 <br/>
+                    </form>
             </div>
         )
 

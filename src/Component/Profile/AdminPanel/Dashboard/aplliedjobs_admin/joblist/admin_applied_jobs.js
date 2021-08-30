@@ -43,24 +43,24 @@ class Admin_applied_jobs extends Component {
 
     render() {
         // console.log(this.state.jobs)
-        let jobitem = (
-            <div>
-
-                { this.state.jobs.map((job) => {
-                    return (
-
-                        <Joblistitem
-                            key={job.id}
-                            id={job.jobID}
-                            title={job.title}
-                            status={job.jobStatus}
-                            created_at={job.createdAt}
-
-                        />
-                    );
-                })}
-            </div>
-        );
+        // let jobitem = (
+        //     <div>
+        //
+        //         { this.state.jobs.map((job) => {
+        //             return (
+        //
+        //                 <Joblistitem
+        //                     key={job.id}
+        //                     id={job.jobID}
+        //                     title={job.title}
+        //                     status={job.jobStatus}
+        //                     created_at={job.createdAt}
+        //
+        //                 />
+        //             );
+        //         })}
+        //     </div>
+        // );
         return (
 
 
@@ -70,7 +70,7 @@ class Admin_applied_jobs extends Component {
                     <div className="row">
 
                         <div className="col-sm">
-                            {jobitem}
+                            {/*{jobitem}*/}
 
                         </div>
 

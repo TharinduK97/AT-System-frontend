@@ -216,12 +216,6 @@ class Userview extends Component {
                                                             </div>
                                                         </div>
 
-
-
-
-
-
-
                                                     </div>
                                             </div>
                                         </div>
@@ -271,10 +265,10 @@ class Userview extends Component {
 
                                 <div className="col">
 
-                                    <button type="button" className="btn btn-outline-secondary" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop">
-                                            view jobs
-                                    </button>
+                                    {/*<button type="button" className="btn btn-outline-secondary" data-bs-toggle="modal"*/}
+                                    {/*        data-bs-target="#staticBackdrop">*/}
+                                    {/*        view jobs*/}
+                                    {/*</button>*/}
                                 </div>
                             </div>
                         </div>
