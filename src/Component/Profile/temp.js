@@ -166,7 +166,7 @@ const Editdetails =(props)=> {
         return (
 
 
-            <div class="container scr">
+            <div class="container scr he">
 <br/>
                 <div class="row"></div>
                 <div className="col">

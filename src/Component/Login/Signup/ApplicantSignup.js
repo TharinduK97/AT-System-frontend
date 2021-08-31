@@ -8,7 +8,7 @@ const ApplicantSignup = (props) => {
 
     firstName: "",
     lastName: "",
-    gender:"",
+    gender:"male",
     email: "",
     phonenumber: "",
     bio: '',
@@ -163,7 +163,7 @@ const ApplicantSignup = (props) => {
     if (state.isvalid===true){
       var axios = require('axios');
 
-      var data = JSON.stringify({ "role":"applicant", "firstName":state.firstName , "lastName":state.lastName ,"contactNum":state.phonenumber, "workExperience": state.workexperience,
+      var data = JSON.stringify({ "role":"Applicant", "firstName":state.firstName , "lastName":state.lastName ,"contactNum":state.phonenumber, "workExperience": state.workexperience,
         "skills": state.skills, "imgUrl": "", "bio": state.bio, "email":state.email,"gender":state.gender,"createdAt":today,"password":state.password});
 
       var config = {
@@ -190,7 +190,7 @@ const ApplicantSignup = (props) => {
 
 
   return (
-    <div className="container">
+    <div className="container he">
       <br/>
       <div className="container">
         <div className="row">
@@ -333,6 +333,7 @@ const ApplicantSignup = (props) => {
           </div>
         </div>
       </div>
+      <br/>
     </div>
   );
 };

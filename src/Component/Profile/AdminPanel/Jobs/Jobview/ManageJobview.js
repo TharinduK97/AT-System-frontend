@@ -85,7 +85,7 @@ class ManageJobview extends Component {
         var data = JSON.stringify({ "id":this.props.match.params.id, "title":this.state.title===''?this.state.job.title:this.state.title , "skills":this.state.skills===''?this.state.job.skills:this.state.skills ,  "salary":this.state.salary===''?this.state.job.salary:this.state.salary, "description": this.state.description===''? this.state.job.description:this.state.description,
             "jobStatus": this.state.status===''?this.state.job.jobStatus:this.state.status, "limitLine": this.state.deadline===''?this.state.job.limitLine:this.state.deadline, "fullPart":this.state.jobtype===''?this.state.job.fullPart:this.state.jobtype});
 
-        console.log(data)
+        // console.log(data)
         var config = {
             method: 'put',
             url: `https://localhost:5001/Job`,
@@ -126,9 +126,9 @@ class ManageJobview extends Component {
 
 
 
-            <div>
+            <div className="mjob">
                 <br/>
-                <div className="container card">
+                <div className="container card ">
 
                     <div className="row ">
                         <div className="col-sm-1">

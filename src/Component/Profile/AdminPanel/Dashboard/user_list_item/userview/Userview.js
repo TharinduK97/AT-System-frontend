@@ -111,7 +111,7 @@ class Userview extends Component {
         return (
 
 
-            <div class="container scr">
+            <div class="container mjob">
 
                 <div className="container">
                     <div className="row">

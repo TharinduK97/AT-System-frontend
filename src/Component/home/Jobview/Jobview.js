@@ -105,9 +105,9 @@ class Jobview extends Component {
 
 
 
-            <div>
+            <div className="he">
                 <br/>
-                <div className="container">
+                <div className="container he">
                     <div className="row">
                         <div className="col-sm-1">
 

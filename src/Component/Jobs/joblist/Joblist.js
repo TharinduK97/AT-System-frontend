@@ -61,7 +61,7 @@ class Joblist extends Component {
         return (
 
 
-            <div>
+            <div className="mjob">
 <br/>
                 <div className="container  card">
                     <div className="row">

@@ -21,7 +21,7 @@ class Job_List_Item extends Component {
                         <h5 className="mb-1">{this.props.title}</h5>
                         <small></small>
                     </div>
-                    <p className="mb-1">{this.props.skills}.</p>
+
                     <small>{this.props.limitLine}</small>
                 </Link>
 

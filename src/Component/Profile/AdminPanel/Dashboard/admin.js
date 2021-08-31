@@ -74,7 +74,7 @@ class Admin extends Component {
         return (
 
 
-            <div class="container">
+            <div class="container mjob">
 
                     <div className="row">
                         <div className="col-2">
@@ -82,7 +82,7 @@ class Admin extends Component {
                         </div>
                         <div className="col-8">
                             <br/>
-                            <h3>Users</h3>
+                            <h3>Applicants</h3>
 <hr/>
                             <div className="list-group">
                                 {userlist}

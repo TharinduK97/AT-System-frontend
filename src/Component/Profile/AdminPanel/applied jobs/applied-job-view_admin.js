@@ -102,34 +102,39 @@ class Applied_job_view extends Component {
 
     handlesumbitemail=(event)=>{
         event.preventDefault();
-        console.log(this.state.email)
+        // console.log(this.state.email)
 
-        var axios = require('axios');
-        var FormData = require('form-data');
-        var fs = require('fs');
-        var data = new FormData();
-        data.append('ToEmail', 'tharindu1997811@gmail.com', {contentType: 'text/plain'});
-        data.append('Attachments', fs.createReadStream('/path/to/file'));
-        data.append('Subject', 'Schedule an interview with Azura dev', {contentType: 'text/plain'});
-        data.append('Body',this.state.email , {contentType: 'text/plain'});
+        if (this.state.email===''){
+            alert('Please add a description')
+        }else {
+            var axios = require('axios');
+            var FormData = require('form-data');
+            var fs = require('fs');
+            var data = new FormData();
+            data.append('ToEmail', this.state.user.email);
+            data.append('Attachments', '');
+            data.append('Subject', 'Schedule an interview with Azura dev');
+            data.append('Body',this.state.email );
 
-        var config = {
-            method: 'post',
-            url: 'https://localhost:5001/Mail/send',
-            headers: {
-                ...data.getHeaders()
-            },
-            data : data
-        };
+            var config = {
+                method: 'post',
+                url: 'https://localhost:5001/Mail/send',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                data : data
+            };
 
-        axios(config)
-            .then(function (response) {
-                console.log(JSON.stringify(response.data));
-                alert('email sent')
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+            axios(config)
+                .then(function (response) {
+                    console.log(JSON.stringify(response.data));
+                    alert('email sent')
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
 
     }
 
@@ -137,10 +142,10 @@ class Applied_job_view extends Component {
 
         return (
 
-            <div>
+            <div className="mjob">
                 <br/>
 
-                <div className="container">
+                <div className="container ">
                     <div className="row">
                         <div className="col-sm-1">
 

@@ -38,7 +38,7 @@ const App = (props) => {
         <BrowserRouter>
             <div>
                 <Nav/>
-                <Switch>
+                <Switch >
 
                     {/*<Route path="/appliedjobview/:id"><AppliedJobview/></Route>*/}
                     <Route path="/joblist/:id" component={Jobview}/>
@@ -60,7 +60,7 @@ const App = (props) => {
                     <Route path="/" exact component={Home}/>
                     <Redirect to="/"/>
                 </Switch>
-                {/*<Footer/>*/}
+                <Footer/>
             </div>
         </BrowserRouter>
 

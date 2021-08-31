@@ -30,7 +30,7 @@ class Admin_applied_jobs extends Component {
             .then(function (response) {
                   this.setState({ jobs:response.data.data.appliedJobs});
                 // console.log(JSON.stringify(response.data));
-                 console.log(response.data)
+                //  console.log(response.data)
 
             }.bind(this))
             .catch(function (error) {
@@ -42,30 +42,12 @@ class Admin_applied_jobs extends Component {
 
 
     render() {
-        // console.log(this.state.jobs)
-        // let jobitem = (
-        //     <div>
-        //
-        //         { this.state.jobs.map((job) => {
-        //             return (
-        //
-        //                 <Joblistitem
-        //                     key={job.id}
-        //                     id={job.jobID}
-        //                     title={job.title}
-        //                     status={job.jobStatus}
-        //                     created_at={job.createdAt}
-        //
-        //                 />
-        //             );
-        //         })}
-        //     </div>
-        // );
+
         return (
 
 
             <div>
-<br/>
+                <br/>
                 <div className="container">
                     <div className="row">
 

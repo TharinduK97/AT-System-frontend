@@ -39,7 +39,7 @@ class Applied_job_view extends Component {
 
         return (
 
-            <div>
+            <div className="mjob">
 
                 <div className="App">
                     <br/>

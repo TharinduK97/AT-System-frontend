@@ -156,10 +156,10 @@ class main_job_list extends Component {
         );
         return (
 
-            <div>
+            <div className="mjob">
                 <br/>
 
-                <div className="container">
+                <div className="container ">
                     <div className="row">
                         <div className="col-sm-1">
 

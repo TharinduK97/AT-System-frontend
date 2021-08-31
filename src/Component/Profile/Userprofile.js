@@ -110,7 +110,7 @@ class Userprofile extends Component {
         return (
 
 
-            <div class="container scr">
+            <div class="container scr he">
 
                 <div className="container">
                     <div className="row">

@@ -107,7 +107,7 @@ const ApplicantLogin = (props) => {
 
 
     return (
-        <div className="container">
+        <div className="container mjob">
             <br/>
             <div className="container">
                 <div className="row">

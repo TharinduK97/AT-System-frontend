@@ -131,9 +131,9 @@ class Addnewjob extends Component {
 
 
 
-            <div>
+            <div className="mjob">
                 <br/>
-                <div className="container card">
+                <div className="container card ">
 
                     <div className="row ">
                         <div className="col-sm-1">

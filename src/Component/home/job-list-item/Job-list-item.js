@@ -25,7 +25,7 @@ class Job_List_Item extends Component {
             <div className="card border-secondary mb-3" style={{width: "18rem"}}>
                 <div className="card-body text-secondary">
                     <h5 className="card-title">{this.props.title}</h5>
-                    <p className="card-text">Skills - {this.props.skills}</p>
+
                     <p className="card-text"><span className="badge bg-secondary">{this.props.jobStatus}</span></p>
 
 

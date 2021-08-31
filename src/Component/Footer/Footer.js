@@ -3,45 +3,25 @@ import './Footer.css';
 
 const footer=()=>{
     return(
-        <div className="">
+        <div className="xx">
+            <footer className="footer-area footer--light">
 
-            <div className="row" style={{textalign:"center"}}>
+                <div className="mini-footer">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <div className="copyright-text">
+                                    <p>© 2021
+                                        <a href="#"> DigiPro </a>. All rights reserved. Created by
+                                        <a href="#"> AzuraDev</a>
+                                    </p>
+                                </div>
 
-            </div>
+                                <div className="go_top">
 
-
-            <footer className="footer-bs ">
-                <div className="row">
-                    <div className="col-md-3 footer-brand animated fadeInLeft">
-                        <h2></h2>
-                        <p></p>
-                        <p>Conqureos, All rights reserved</p>
-        </div>
-                    <div className="col-md-4 footer-nav animated fadeInUp">
-
-                        <div className="col-md-6">
-                            <ul className="list">
-
-                                <li><a href="#">Terms & Condition</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                            </ul>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div className="col-md-2 footer-social animated fadeInDown">
-                        <h4>Follow Us</h4>
-                        <ul>
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">Instagram</a></li>
-
-                        </ul>
-                    </div>
-                    <div className="col-md-3 footer-ns animated fadeInRight">
-                        <h4>Newsletter</h4>
-                        <p>A rover wearing a fuzzy suit doesn’t alarm the real penguins</p>
-                        <p>
-
-
-                        </p>
                     </div>
                 </div>
             </footer>

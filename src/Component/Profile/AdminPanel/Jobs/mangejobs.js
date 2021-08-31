@@ -137,7 +137,7 @@ class mangejobs extends Component {
         );
         return (
 
-            <div>
+            <div className="mjob">
                 <br/>
 
                 <div className="container">
@@ -162,6 +162,7 @@ class mangejobs extends Component {
                     </div>
 
                 </div>
+                <br/>
             </div>
 
 
